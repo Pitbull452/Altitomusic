@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altito</title>
+<style>
+  /* בסיס */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background: url('your-background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+  }
+
+  /* HEADER וההמבורגר */
+  header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    z-index: 1002;
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1003;
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+  }
+
+  /* לוגו במרכז */
+  .logo {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 40px 0;
+  }
+
+  .logo img {
+    height: 150px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* תפריט צד ימין */
+  .menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    z-index: 1001;
+  }
+
+  .menu a {
+    display: block;
+    color: #aa66ff;
+    margin: 15px 0;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    text-shadow: 0 0 2px #c399ff;
+  }
+
+  .menu a:hover {
+    background: rgba(128,0,128,0.5);
+    color: white;
+    text-shadow: 0 0 2px #ffffff;
+  }
+
+  /* סקשנים */
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .content-box {
+    background: rgba(0,0,0,0.85);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(170,102,255,0.3); /* זוהר ניאון עדין */
+  }
+
+  .content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(170,102,255,0.5);
+  }
+
+  h1 {
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+    margin-bottom: 20px;
+  }
+
+  p, h3 {
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Platforms */
+  .platforms {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .platforms a img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .platforms a img:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 10px #c399ff;
+  }
+
+  /* Music Player */
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.85);
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .music-player button {
+    background: #aa66ff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 2px #c399ff;
+  }
+
+  .music-player button:hover {
+    background: darkviolet;
+  }
+
+  /* Discography */
+  .discography-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .track-card {
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(170,102,255,0.5); /* זוהר ניאון */
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .track-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .track-card h3 {
+    margin: 5px 0;
+  }
+
+  .track-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #c399ff;
+  }
+
+  /* Responsive למובייל */
+  @media screen and (max-width: 768px) {
+    .gallery img, .track-card {
+      width: 90%;
+    }
+    .platforms a img {
+      width: 40px;
+      height: 40px;
+    }
+    .logo img {
+      height: 120px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="logo">
+  <img src="your-logo.png" alt="Altito Logo">
+</div>
+
+<div class="menu" id="menu">
+  <a href="#about">About</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#discography">Discography</a>
+  <a href="#booking">Booking</a>
+  <a href="#platforms">All Platforms</a>
+</div>
+
+<section id="about" class="fade-section">
+  <div class="content-box">
+    <h1>About / אודות</h1>
+    <p>Altito (Ishay Altit) is an Israeli trance producer...</p>
+  </div>
+</section>
+
+<section id="gallery" class="fade-section">
+  <div class="content-box">
+    <h1>Gallery</h1>
+    <div class="gallery">
+      <img src="Altito1.png" alt="Altito1">
+      <img src="Altito2.png" alt="Altito2">
+      <img src="Altito3.png" alt="Altito3">
+    </div>
+  </div>
+</section>
+
+<section id="discography" class="fade-section">
+  <div class="content-box">
+    <h1>Discography</h1>
+    <div class="discography-grid">
+      <div class="track-card">
+        <img src="Stay in Mars.png" alt="Stay in Mars">
+        <h3>Stay in Mars</h3>
+        <p>Released: 2024</p>
+      </div>
+      <div class="track-card">
+        <img src="Radient Vision.png" alt="Radient Vision">
+        <h3>Radient Vision</h3>
+        <p>Released: 2025</p>
+      </div>
+      <div class="track-card">
+        <img src="The Code Of Melody.png" alt="The Code Of Melody">
+        <h3>The Code Of Melody</h3>
+        <p>Released: 2025</p>
+      </div>
+      <div class="track-card">
+        <img src="Goa Planet.png" alt="Goa Planet">
+        <h3>Goa Planet</h3>
+        <p>Released: 2025 (Timewarp)</p>
+      </div>
+      <div class="track-card">
+        <img src="Inner Void.png" alt="Inner Void">
+        <h3>Inner Void</h3>
+        <p>Released: 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="fade-section">
+  <div class="content-box">
+    <h1>Booking</h1>
+    <p>פרטי יצירת קשר להזמנות.</p>
+  </div>
+</section>
+
+<section id="platforms" class="fade-section">
+  <div class="content-box">
+    <h1>All Platforms</h1>
+    <div class="platforms">
+      <a href="https://open.spotify.com/" target="_blank"><img src="spotify-icon.png" alt="Spotify"></a>
+      <a href="https://music.apple.com/" target="_blank"><img src="apple-music-icon.png" alt="Apple Music"></a>
+      <a href="https://soundcloud.com/" target="_blank"><img src="soundcloud-icon.png" alt="SoundCloud"></a>
+      <a href="https://www.youtube.com/" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
+    </div>
+  </div>
+</section>
+
+<div class="music-player">
+  <audio id="bg-music" loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="toggleMusic()">Play</button>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById("bg-music");
+    const btn = document.querySelector(".music-player button");
+    if (music.paused) {
+      music.play();
+      btn.textContent = "Pause";
+    } else {
+      music.pause();
+      btn.textContent = "Play";
+    }
+  }
+
+  const sections = document.querySelectorAll('.fade-section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
