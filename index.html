@@ -54,7 +54,7 @@
 
   /* תפריט צד ימין */
   .menu {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -63,7 +63,13 @@
     background: rgba(0,0,0,0.9);
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
     z-index: 1001;
+  }
+
+  .menu.open {
+    transform: translateX(0);
   }
 
   .menu a {
@@ -107,6 +113,8 @@
     border-radius: 15px;
     text-align: center;
     max-width: 1000px;
+    max-height: 600px;
+    overflow-y: auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 15px rgba(170,102,255,0.3); /* זוהר ניאון עדין */
   }
@@ -125,6 +133,8 @@
   p, h3 {
     color: #aa66ff;
     text-shadow: 0 0 2px #c399ff;
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   /* Gallery */
@@ -185,7 +195,7 @@
     background: #aa66ff;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
@@ -226,15 +236,33 @@
     height: auto;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .track-card img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
   }
 
   .track-card h3 {
     margin: 5px 0;
   }
 
-  .track-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #c399ff;
+  .buy-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.6);
+    color: #aa66ff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .buy-btn:hover {
+    background: rgba(170,102,255,0.2);
+    box-shadow: 0 0 10px #c399ff;
   }
 
   /* Responsive למובייל */
@@ -248,6 +276,9 @@
     }
     .logo img {
       height: 120px;
+    }
+    .content-box p {
+      font-size: 16px;
     }
   }
 </style>
@@ -263,20 +294,41 @@
 </div>
 
 <div class="menu" id="menu">
-  <a href="#about">About</a>
+  <a href="#Biography">Biography</a>
   <a href="#gallery">Gallery</a>
   <a href="#discography">Discography</a>
   <a href="#booking">Booking</a>
   <a href="#platforms">All Platforms</a>
 </div>
 
-<section id="about" class="fade-section">
+<!-- Biography -->
+<section id="Biography" class="fade-section">
   <div class="content-box">
-    <h1>About / אודות</h1>
-    <p>Altito (Ishay Altit) is an Israeli trance producer...</p>
+    <h1>Biography</h1>
+    <p>
+      <strong>English:</strong><br>
+      Altito (Ishay Altit) is an Israeli trance producer who began his musical journey in 2018. After years of diving deep into music production and sound design, he decided in 2023 to share his music with the world
+    </p>
+    <p>
+      His style blends Goa Trance with Retro Dark, featuring hypnotic melodies and deep psychedelic vibes. Each track is a personal journey, representing his unique mark in the trance scene.
+    </p>
+    <p>
+      He has released an EP on the international label Timewarp Records and collaborated with several Israeli trance artists along the way.
+    </p>
+    <p>
+      <strong>עברית:</strong><br>
+    ישי אלטיט הוא יוצר טראנס ישראלי שהחל את דרכו בשנת 2018, לאחר שנים של עבודה בפיתוח סאונד והפקה מוזיקלית. בשנת 2023 החליט לשתף את המוזיקה שלו לקהל
+    </p>
+    <p>
+      המוזיקה שלו משלבת בין גואה טראנס לרטרו דארק, עם מלודיות מהפנטות וסאונד פסיכדלי עמוק. כל טראק הוא מסע אישי שמייצג את החותם הייחודי שלו בסצנת הטראנס
+    </p>
+    <p>
+      הוא הוציא EP בלייבל הבינלאומי Timewarp Records בשיתוף פעולה עם אומני טראנס ישראלים
+    </p>
   </div>
 </section>
 
+<!-- Gallery -->
 <section id="gallery" class="fade-section">
   <div class="content-box">
     <h1>Gallery</h1>
@@ -288,39 +340,53 @@
   </div>
 </section>
 
+<!-- Discography -->
 <section id="discography" class="fade-section">
   <div class="content-box">
     <h1>Discography</h1>
     <div class="discography-grid">
+
       <div class="track-card">
-        <img src="Stay in Mars.png" alt="Stay in Mars">
-        <h3>Stay in Mars</h3>
-        <p>Released: 2024</p>
-      </div>
-      <div class="track-card">
-        <img src="Radient Vision.png" alt="Radient Vision">
-        <h3>Radient Vision</h3>
-        <p>Released: 2025</p>
-      </div>
-      <div class="track-card">
-        <img src="The Code Of Melody.png" alt="The Code Of Melody">
-        <h3>The Code Of Melody</h3>
-        <p>Released: 2025</p>
-      </div>
-      <div class="track-card">
-        <img src="Goa Planet.png" alt="Goa Planet">
+        <a href="https://altito.bandcamp.com/album/goa-planet" target="_blank">
+          <img src="Goa Planet.png" alt="Goa Planet">
+        </a>
         <h3>Goa Planet</h3>
         <p>Released: 2025 (Timewarp)</p>
+        <a class="buy-btn" href="https://altito.bandcamp.com/album/goa-planet" target="_blank">Buy Now</a>
       </div>
+
       <div class="track-card">
-        <img src="Inner Void.png" alt="Inner Void">
+        <a href="https://altito.bandcamp.com/track/inner-void" target="_blank">
+          <img src="Inner Void.png" alt="Inner Void">
+        </a>
         <h3>Inner Void</h3>
         <p>Released: 2025</p>
+        <a class="buy-btn" href="https://altito.bandcamp.com/track/inner-void" target="_blank">Buy Now</a>
       </div>
+
+      <div class="track-card">
+        <a href="https://altito.bandcamp.com/album/radient-vision" target="_blank">
+          <img src="Radient Vision.png" alt="Radient Vision">
+        </a>
+        <h3>Radient Vision</h3>
+        <p>Released: 2025</p>
+        <a class="buy-btn" href="https://altito.bandcamp.com/album/radient-vision" target="_blank">Buy Now</a>
+      </div>
+
+      <div class="track-card">
+        <a href="https://altito.bandcamp.com/track/the-code-of-melody" target="_blank">
+          <img src="The Code Of Melody.png" alt="The Code Of Melody">
+        </a>
+        <h3>The Code Of Melody</h3>
+        <p>Released: 2025</p>
+        <a class="buy-btn" href="https://altito.bandcamp.com/track/the-code-of-melody" target="_blank">Buy Now</a>
+      </div>
+
     </div>
   </div>
 </section>
 
+<!-- Booking -->
 <section id="booking" class="fade-section">
   <div class="content-box">
     <h1>Booking</h1>
@@ -328,43 +394,42 @@
   </div>
 </section>
 
+<!-- Platforms -->
 <section id="platforms" class="fade-section">
   <div class="content-box">
     <h1>All Platforms</h1>
     <div class="platforms">
-      <a href="https://open.spotify.com/" target="_blank"><img src="spotify-icon.png" alt="Spotify"></a>
-      <a href="https://music.apple.com/" target="_blank"><img src="apple-music-icon.png" alt="Apple Music"></a>
-      <a href="https://soundcloud.com/" target="_blank"><img src="soundcloud-icon.png" alt="SoundCloud"></a>
-      <a href="https://www.youtube.com/" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
+      <a href="https://open.spotify.com/artist/0Ag2EV082VOGly1wuXiWFU" target="_blank"><img src="spotify-icon.png" alt="Spotify"></a>
+      <a href="https://music.apple.com/us/artist/altito/1788277290" target="_blank"><img src="apple-music-icon.png" alt="Apple Music"></a>
+      <a href="https://soundcloud.com/altito_0" target="_blank"><img src="soundcloud-icon.png" alt="SoundCloud"></a>
+      <a href="https://www.youtube.com/@Altitomusic" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
     </div>
   </div>
 </section>
 
+<!-- Music Player -->
 <div class="music-player">
   <audio id="bg-music" loop>
     <source src="your-music.mp3" type="audio/mpeg">
   </audio>
-  <button onclick="toggleMusic()">Play</button>
+  <button onclick="toggleMute()">🔊</button>
 </div>
 
 <script>
+  const menu = document.getElementById("menu");
   function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    menu.classList.toggle('open');
   }
 
-  function toggleMusic() {
-    const music = document.getElementById("bg-music");
-    const btn = document.querySelector(".music-player button");
-    if (music.paused) {
-      music.play();
-      btn.textContent = "Pause";
-    } else {
-      music.pause();
-      btn.textContent = "Play";
-    }
+  const music = document.getElementById("bg-music");
+  const btn = document.querySelector(".music-player button");
+
+  function toggleMute() {
+    music.muted = !music.muted;
+    btn.textContent = music.muted ? "🔇" : "🔊";
   }
 
+  // Fade-in effect
   const sections = document.querySelectorAll('.fade-section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
