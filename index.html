@@ -5,277 +5,293 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Altito</title>
 <style>
-/* בסיס */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
-  background: url('your-background.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #aa66ff;
-  text-shadow: 0 0 2px #c399ff;
-}
+  /* בסיס */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background: url('your-background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+  }
 
-/* HEADER וההמבורגר */
-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 0;
-  z-index: 1002;
-}
+  /* HEADER וההמבורגר */
+  header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    z-index: 1002;
+  }
 
-.menu-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1003;
-  color: #aa66ff;
-  text-shadow: 0 0 2px #c399ff;
-}
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1003;
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+  }
 
-/* לוגו במרכז */
-.logo {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 20px 0 40px 0;
-}
+  /* לוגו במרכז */
+  .logo {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 40px 0;
+  }
 
-.logo img {
-  height: 150px;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
+  .logo img {
+    height: 150px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
 
-/* תפריט צד ימין */
-.menu {
-  display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  padding: 20px;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  z-index: 1001;
-}
+  /* תפריט צד ימין */
+  .menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+  }
 
-.menu.open {
-  transform: translateX(0);
-}
+  .menu.open {
+    transform: translateX(0);
+  }
 
-.menu a {
-  display: block;
-  color: #aa66ff;
-  margin: 15px 0;
-  text-decoration: none;
-  background: rgba(0,0,0,0.5);
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  text-shadow: 0 0 2px #c399ff;
-}
+  .menu a {
+    display: block;
+    color: #aa66ff;
+    margin: 15px 0;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    text-shadow: 0 0 2px #c399ff;
+  }
 
-.menu a:hover {
-  background: rgba(128,0,128,0.5);
-  color: white;
-  text-shadow: 0 0 2px #ffffff;
-}
+  .menu a:hover {
+    background: rgba(128,0,128,0.5);
+    color: white;
+    text-shadow: 0 0 2px #ffffff;
+  }
 
-/* סקשנים */
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
-}
+  /* סקשנים */
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.content-box {
-  background: rgba(0,0,0,0.85);
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  max-width: 1000px;
-  max-height: 600px;
-  overflow-y: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 15px rgba(170,102,255,0.3);
-}
+  .content-box {
+    background: rgba(0,0,0,0.85);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 1000px;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(170,102,255,0.3); /* זוהר ניאון עדין */
+  }
 
-.content-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(170,102,255,0.5);
-}
+  .content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(170,102,255,0.5);
+  }
 
-h1 {
-  color: #aa66ff;
-  text-shadow: 0 0 2px #c399ff;
-  margin-bottom: 20px;
-}
+  h1 {
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+    margin-bottom: 20px;
+  }
 
-p, h3 {
-  color: #aa66ff;
-  text-shadow: 0 0 2px #c399ff;
-  font-size: 18px;
-  line-height: 1.6;
-}
+  p, h3 {
+    color: #aa66ff;
+    text-shadow: 0 0 2px #c399ff;
+    font-size: 18px;
+    line-height: 1.6;
+  }
 
-/* Gallery */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
+  /* Gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 
-.gallery img {
-  width: 300px;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
+  .gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
 
-.gallery img:hover {
-  transform: scale(1.05);
-}
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
 
-/* Discography */
-.discography-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
+  /* Platforms */
+  .platforms {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
 
-.track-card {
-  background: rgba(0,0,0,0.85);
-  border-radius: 15px;
-  padding: 15px;
-  width: 250px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: float 3s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(170,102,255,0.5);
-}
+  .platforms a img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
 
-@keyframes float {
-  0%,100% { transform: translateY(0px);}
-  50% { transform: translateY(-8px);}
-}
+  /* צבעי זוהר לפי פלטפורמה */
+  .spotify img { box-shadow: 0 0 15px #1DB954; }
+  .apple img { box-shadow: 0 0 15px #FA233B; }
+  .soundcloud img { box-shadow: 0 0 15px #FF8800; }
+  .youtube img { box-shadow: 0 0 15px #FF0000; }
+  .instagram img { box-shadow: 0 0 15px #C13584; }
+  .facebook img { box-shadow: 0 0 15px #1877F2; }
+  .tiktok img { box-shadow: 0 0 15px #69C9D0; }
+  .bandcamp img { box-shadow: 0 0 15px #000000; }
+  .whatsapp img { box-shadow: 0 0 15px #25D366; }
+  .quantum img { box-shadow: 0 0 15px #FFD700; }
 
-.track-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: transform 0.3s, opacity 0.3s;
-}
+  .platforms a img:hover {
+    transform: scale(1.3);
+  }
 
-.track-card img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
+  /* Music Player */
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.85);
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+  }
 
-.track-card h3 { margin: 5px 0; }
+  .music-player button {
+    background: #aa66ff;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 2px #c399ff;
+  }
 
-.buy-btn {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 16px;
-  background: rgba(0,0,0,0.6);
-  color: #aa66ff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s, box-shadow 0.3s;
-}
+  .music-player button:hover {
+    background: darkviolet;
+  }
 
-.buy-btn:hover {
-  background: rgba(170,102,255,0.2);
-  box-shadow: 0 0 10px #c399ff;
-}
+  /* Discography */
+  .discography-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
 
-/* Platforms & Booking */
-.platforms {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
+  .track-card {
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(170,102,255,0.5); /* זוהר ניאון */
+  }
 
-.platforms a img {
-  width: 50px;
-  height: 50px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
 
-.platforms a img:hover { transform: scale(1.3); }
+  .track-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+  }
 
-/* Glow colors */
-.platforms a.spotify img:hover { box-shadow: 0 0 15px #1DB954; }
-.platforms a.apple img:hover { box-shadow: 0 0 15px #FA2C55; }
-.platforms a.soundcloud img:hover { box-shadow: 0 0 15px #FF7700; }
-.platforms a.youtube img:hover { box-shadow: 0 0 15px #FF0000; }
-.platforms a.instagram img:hover { box-shadow: 0 0 15px #E1306C; }
-.platforms a.facebook img:hover { box-shadow: 0 0 15px #1877F2; }
-.platforms a.tiktok img:hover { box-shadow: 0 0 15px #69C9D0; }
-.platforms a.bandcamp img:hover { box-shadow: 0 0 15px #629AA9; }
-.platforms a.whatsapp img:hover { box-shadow: 0 0 15px #25D366; }
-.platforms a.quantum img:hover { box-shadow: 0 0 15px #AA66FF; }
+  .track-card img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 
-/* Music Player */
-.music-player {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0,0,0,0.85);
-  padding: 10px 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
-}
+  .track-card h3 {
+    margin: 5px 0;
+  }
 
-.music-player button {
-  background: #aa66ff;
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-shadow: 0 0 2px #c399ff;
-}
+  .buy-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.6);
+    color: #aa66ff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
 
-.music-player button:hover { background: darkviolet; }
+  .buy-btn:hover {
+    background: rgba(170,102,255,0.2);
+    box-shadow: 0 0 10px #c399ff;
+  }
 
-@media screen and (max-width: 768px) {
-  .gallery img, .track-card { width: 90%; }
-  .platforms a img { width: 40px; height: 40px; }
-  .logo img { height: 120px; }
-  .content-box p { font-size: 16px; }
-}
+  /* Responsive למובייל */
+  @media screen and (max-width: 768px) {
+    .gallery img, .track-card {
+      width: 90%;
+    }
+    .platforms a img {
+      width: 40px;
+      height: 40px;
+    }
+    .logo img {
+      height: 120px;
+    }
+    .content-box p {
+      font-size: 16px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -300,8 +316,26 @@ p, h3 {
 <section id="Biography" class="fade-section">
   <div class="content-box">
     <h1>Biography</h1>
-    <p><strong>English:</strong> Altito (Ishay Altit) is an Israeli trance producer who began his musical journey in 2018. After years of diving deep into music production and sound design, he decided in 2023 to share his music with the world. His style blends Goa Trance with Retro Dark, featuring hypnotic melodies and deep psychedelic vibes. Each track is a personal journey, representing his unique mark in the trance scene. He has released an EP on the international label Timewarp Records and collaborated with several Israeli trance artists along the way.</p>
-    <p><strong>עברית:</strong> ישי אלטיט הוא יוצר טראנס ישראלי שהחל את דרכו בשנת 2018, לאחר שנים של עבודה בפיתוח סאונד והפקה מוזיקלית. בשנת 2023 החליט לשתף את המוזיקה שלו לקהל. המוזיקה שלו משלבת בין גואה טראנס לרטרו דארק, עם מלודיות מהפנטות וסאונד פסיכדלי עמוק. כל טראק הוא מסע אישי שמייצג את החותם הייחודי שלו בסצנת הטראנס. הוא הוציא EP בלייבל הבינלאומי Timewarp Records בשיתוף פעולה עם אומני טראנס ישראלים.</p>
+    <p>
+      <strong>English:</strong><br>
+      Altito (Ishay Altit) is an Israeli trance producer who began his musical journey in 2018. After years of diving deep into music production and sound design, he decided in 2023 to share his music with the world
+    </p>
+    <p>
+      His style blends Goa Trance with Retro Dark, featuring hypnotic melodies and deep psychedelic vibes. Each track is a personal journey, representing his unique mark in the trance scene.
+    </p>
+    <p>
+      He has released an EP on the international label Timewarp Records and collaborated with several Israeli trance artists along the way.
+    </p>
+    <p>
+      <strong>עברית:</strong><br>
+      ישי אלטיט הוא יוצר טראנס ישראלי שהחל את דרכו בשנת 2018, לאחר שנים של עבודה בפיתוח סאונד והפקה מוזיקלית. בשנת 2023 החליט לשתף את המוזיקה שלו לקהל
+    </p>
+    <p>
+      המוזיקה שלו משלבת בין גואה טראנס לרטרו דארק, עם מלודיות מהפנטות וסאונד פסיכדלי עמוק. כל טראק הוא מסע אישי שמייצג את החותם הייחודי שלו בסצנת הטראנס
+    </p>
+    <p>
+      הוא הוציא EP בלייבל הבינלאומי Timewarp Records בשיתוף פעולה עם אומני טראנס ישראלים
+    </p>
   </div>
 </section>
 
@@ -322,30 +356,43 @@ p, h3 {
   <div class="content-box">
     <h1>Discography</h1>
     <div class="discography-grid">
+
       <div class="track-card">
-        <a href="https://altito.bandcamp.com/album/goa-planet" target="_blank"><img src="Goa Planet.png" alt="Goa Planet"></a>
+        <a href="https://altito.bandcamp.com/album/goa-planet" target="_blank">
+          <img src="Goa Planet.png" alt="Goa Planet">
+        </a>
         <h3>Goa Planet</h3>
         <p>Released: 2025 (Timewarp)</p>
         <a class="buy-btn" href="https://altito.bandcamp.com/album/goa-planet" target="_blank">Buy Now</a>
       </div>
+
       <div class="track-card">
-        <a href="https://altito.bandcamp.com/track/inner-void" target="_blank"><img src="Inner Void.png" alt="Inner Void"></a>
+        <a href="https://altito.bandcamp.com/track/inner-void" target="_blank">
+          <img src="Inner Void.png" alt="Inner Void">
+        </a>
         <h3>Inner Void</h3>
         <p>Released: 2025</p>
         <a class="buy-btn" href="https://altito.bandcamp.com/track/inner-void" target="_blank">Buy Now</a>
       </div>
+
       <div class="track-card">
-        <a href="https://altito.bandcamp.com/album/radient-vision" target="_blank"><img src="Radient Vision.png" alt="Radient Vision"></a>
+        <a href="https://altito.bandcamp.com/album/radient-vision" target="_blank">
+          <img src="Radient Vision.png" alt="Radient Vision">
+        </a>
         <h3>Radient Vision</h3>
         <p>Released: 2025</p>
         <a class="buy-btn" href="https://altito.bandcamp.com/album/radient-vision" target="_blank">Buy Now</a>
       </div>
+
       <div class="track-card">
-        <a href="https://altito.bandcamp.com/track/the-code-of-melody" target="_blank"><img src="The Code Of Melody.png" alt="The Code Of Melody"></a>
+        <a href="https://altito.bandcamp.com/track/the-code-of-melody" target="_blank">
+          <img src="The Code Of Melody.png" alt="The Code Of Melody">
+        </a>
         <h3>The Code Of Melody</h3>
         <p>Released: 2025</p>
         <a class="buy-btn" href="https://altito.bandcamp.com/track/the-code-of-melody" target="_blank">Buy Now</a>
       </div>
+
     </div>
   </div>
 </section>
@@ -383,22 +430,16 @@ p, h3 {
 
 <!-- Music Player -->
 <div class="music-player">
+  <button id="play-btn">▶️</button>
+  <button id="mute-btn">🔊</button>
   <audio id="bg-music" loop>
     <source src="your-music.mp3" type="audio/mpeg">
   </audio>
-  <button onclick="toggleMute()">🔊</button>
 </div>
 
 <script>
 const menu = document.getElementById("menu");
 function toggleMenu() { menu.classList.toggle('open'); }
-
-const music = document.getElementById("bg-music");
-const btn = document.querySelector(".music-player button");
-function toggleMute() {
-  music.muted = !music.muted;
-  btn.textContent = music.muted ? "🔇" : "🔊";
-}
 
 // Fade-in effect
 const sections = document.querySelectorAll('section');
@@ -408,6 +449,32 @@ const observer = new IntersectionObserver(entries => {
   });
 },{ threshold: 0.2 });
 sections.forEach(section => observer.observe(section));
+
+// Music Player
+const music = document.getElementById("bg-music");
+const playBtn = document.getElementById("play-btn");
+const muteBtn = document.getElementById("mute-btn");
+
+// Play / Pause
+playBtn.addEventListener("click", () => {
+  if(music.paused){
+    music.play();
+    playBtn.textContent = "⏸";
+  } else {
+    music.pause();
+    playBtn.textContent = "▶️";
+  }
+});
+
+// Mute / Unmute
+muteBtn.addEventListener("click", () => {
+  music.muted = !music.muted;
+  muteBtn.textContent = music.muted ? "🔇" : "🔊";
+});
+
+// ווליום מלא בתחילת טעינה
+music.volume = 1;
+music.muted = false;
 </script>
 
 </body>
